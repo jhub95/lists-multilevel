@@ -86,7 +86,7 @@ class CollapsibleList extends React.Component {
     return (
       <div key={ID+"1"} >
       <List key={ID+"100"}>
-        <ListItem button onClick={() => this.openCollapse(ID)} key={ID} style={{paddingLeft:level*20+"px"}} >{"Level:"+level+" = "+item.name}</ListItem>
+        <ListItem to={ item.path ? item.path : '#'} component={NavLink} button onClick={() => this.openCollapse(ID)} key={ID} style={{paddingLeft:level*20+"px"}} >{"Level:"+level+" = "+item.name}</ListItem>
       {
         (item.collapse) ?
           (level+=1,
