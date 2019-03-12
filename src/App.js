@@ -1,5 +1,7 @@
 import React from 'react'
 import shortid from 'shortid'
+import { NavLink } from "react-router-dom"
+
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Collapse from '@material-ui/core/Collapse'
@@ -8,45 +10,51 @@ import Collapse from '@material-ui/core/Collapse'
 const libraryRoutes = [
   {
       collapse: true,
-      name: "1 Kütüphane",
+      name: "1 Library",
       id: shortid.generate(),
       views: [{
-          name: "1.1 Kütüphane Arama",
+          name: "1.1 Library Search",
+          path: "/library/search",
           id: shortid.generate(),
         },
         {
-          name:"1.2 Kutuphane Popular",
+          name:"1.2 Popular Items",
+          path:"/library/popular",
           id: shortid.generate(),
         },
         {
           collapse:true,
           id: shortid.generate(),
-          name:"1.3 Kutuphane Admin",
+          name:"1.3 Library Admin",
           views: [{
-            name: "1.3.1 kullanıcı oluştur",
+            name: "1.3.1 Create Record",
+            path: "/library/create",
             id: shortid.generate(),
           },
           {
             collapse:true,
             id: shortid.generate(),
-            name:"1.3.2 Profile",
+            name:"1.3.2 Update",
             views:[{
               collapse:true,
               id: shortid.generate(),
-              name: "1.3.2.1 User Profile",
+              name: "1.3.2.1 Update Record",
               views:[
                 {
                   id: shortid.generate(),
-                  name:"1.3.2.1.1 My Profile"
+                  name:"1.3.2.1.1 Library Record",
+                  path:"/library/updateLibraryRecord"
                 },
                 {
                   id: shortid.generate(),
-                  name:"1.3.2.1.2 Other Profile"
+                  name:"1.3.2.1.2 Outsourced Record",
+                  path:"/library/updateOutsourceRecord"
                 }
               ]
             },{
               id: shortid.generate(),
-              name:"1.3.2.2 Update Profile",
+              name:"1.3.2.2 Update Stock",
+              path:"/library/updateStock"
             }]
           }]
         }
@@ -55,7 +63,8 @@ const libraryRoutes = [
   },
   {
     id: shortid.generate(),
-    name: "2 Yönetim"
+    name: "2 Site Admin",
+    path:"/admin"
   }
 ]
 
@@ -88,7 +97,7 @@ class CollapsibleList extends React.Component {
                 (secondItem.collapse) ?
                   this.listGenerator(secondItem, level)
                 :
-                  <ListItem button key={secondID} style={{paddingLeft:level*20+"px"}} >{"Level:"+level+" = "+secondItem.name}</ListItem>
+                  <ListItem to={ secondItem.path ? secondItem.path : '#'} component={NavLink} key={secondID} style={{paddingLeft:level*20+"px"}} >{"Level:"+level+" = "+secondItem.name}</ListItem>
               ) 
             })}
             </Collapse>
