@@ -86,7 +86,16 @@ class CollapsibleList extends React.Component {
     return (
       <div key={ID+"1"} >
       <List key={ID+"100"}>
-        <ListItem to={ item.path ? item.path : '#'} component={NavLink} button onClick={() => this.openCollapse(ID)} key={ID} style={{paddingLeft:level*20+"px"}} >{"Level:"+level+" = "+item.name}</ListItem>
+        <ListItem 
+          to={ item.path ? item.path : '#'} 
+          component={ item.path ? NavLink : null }  
+          button 
+          onClick={() => this.openCollapse(ID)} 
+          key={ID} 
+          style={{paddingLeft:level*20+"px"}} 
+        >
+          {"Level:"+level+" = "+item.name}
+        </ListItem>
       {
         (item.collapse) ?
           (level+=1,
@@ -97,7 +106,14 @@ class CollapsibleList extends React.Component {
                 (secondItem.collapse) ?
                   this.listGenerator(secondItem, level)
                 :
-                  <ListItem to={ secondItem.path ? secondItem.path : '#'} component={NavLink} key={secondID} style={{paddingLeft:level*20+"px"}} >{"Level:"+level+" = "+secondItem.name}</ListItem>
+                  <ListItem 
+                    to={ secondItem.path ? secondItem.path : '#'} 
+                    component={ secondItem.path ? NavLink : null } 
+                    key={secondID} 
+                    style={{paddingLeft:level*20+"px"}} 
+                  >
+                    {"Level:"+level+" = "+secondItem.name}
+                  </ListItem>
               ) 
             })}
             </Collapse>
