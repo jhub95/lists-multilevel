@@ -1,9 +1,9 @@
-# This React recursive collapsible <List> generator uses the following packages:
+# This React recursive collapsible < List > generator uses the following packages:
 ## @material-ui/core
 ## shortid
 ## react-router-dom
 
-I needed to develop a way to use Material UI's <List> component in a recursive manner (lists within lists). It was made with a navigation menu in mind (therefore using react-router-dom) but could be used for other list purposes.
+I needed to develop a way to use Material UI's < List > component in a recursive manner (lists within lists). It was made with a navigation menu in mind (therefore using react-router-dom) but could be used for other list purposes.
 
 It is built on create-react-app. To see a demo clone this repo, do a npm install, and then npm run start.
 
